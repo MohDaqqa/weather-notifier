@@ -8,10 +8,16 @@ WEATHER_API_KEY = 'dfc76fc743db10fcbf4970f458174fa3'
 # ==============
 
 def get_temperature():
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={WEATHER_API_KEY}&units=metric"
+    url = (
+        f"https://api.openweathermap.org/data/2.5/weather"
+        f"?q={CITY}&appid={WEATHER_API_KEY}&units=metric"
+    )
     response = requests.get(url)
+    response.raise_for_status()
 
     data = response.json()
+    if 'main' not in data or 'temp' not in data['main']:
+        raise RuntimeError("Temperature information missing from API response")
     return data['main']['temp']
 
 def send_telegram_message(message):
