@@ -1,10 +1,10 @@
 import requests
 
 # === CONFIG ===
-BOT_TOKEN = '7609212380:AAEZ3auUEuhOMgHdbOwPrRWJbEJqvR_-XQo'
-CHAT_ID = '8032942142'
-CITY = 'Gaza'
-WEATHER_API_KEY = 'dfc76fc743db10fcbf4970f458174fa3'
+BOT_TOKEN = os.environ['BOT_TOKEN']
+CHAT_ID = os.environ['CHAT_ID']
+CITY = 'Gaza,PS'
+WEATHER_API_KEY = os.environ['WEATHER_API_KEY']
 # ==============
 
 def get_temperature():
